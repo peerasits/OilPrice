@@ -19,6 +19,22 @@
             android:isScrollContainer="false"
             tools:context=".MainActivity">
 
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:ems="10"
+                android:hint="xx.xx"
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/unit_price_text"
+                app:layout_constraintStart_toEndOf="@+id/unit_price_text"
+                app:layout_constraintTop_toTopOf="@+id/unit_price_text"
+                app:layout_constraintVertical_bias="0.461" />
+
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="238dp"
@@ -135,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="56dp"
-                android:text="Oli Recoder"
+                android:text="Oli Recorder"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -182,7 +198,7 @@
                 android:id="@+id/unit_price_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:text="Unit price"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="@+id/Amount_text"
@@ -194,7 +210,7 @@
                 android:id="@+id/price_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="28dp"
                 android:text="price"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="@+id/unit_price_text"
@@ -210,6 +226,98 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:ems="4"
+                android:hint="xxxxxx"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toTopOf="@+id/textView7"
+                app:layout_constraintVertical_bias="0.384" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:ems="10"
+                android:hint="xx.xx"
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/Amount_text"
+                app:layout_constraintStart_toEndOf="@+id/Amount_text"
+                app:layout_constraintTop_toTopOf="@+id/Amount_text"
+                app:layout_constraintVertical_bias="0.615" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:text="bath"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/price_text"
+                app:layout_constraintStart_toEndOf="@+id/price_text"
+                app:layout_constraintTop_toTopOf="@+id/price_text"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <RadioGroup
+                android:layout_width="150dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
+                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+                app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintVertical_bias="0.0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButton11"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="km" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="mile" />
+                </LinearLayout>
+            </RadioGroup>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
