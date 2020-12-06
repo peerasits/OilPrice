@@ -14,35 +14,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_layout"
             android:layout_width="match_parent"
-            android:layout_height="728dp"
+            android:layout_height="1000dp"
             android:background="#000000"
             android:isScrollContainer="false"
             tools:context=".MainActivity">
-
-            <EditText
-                android:id="@+id/editTextTextPersonName4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginLeft="28dp"
-                android:ems="10"
-                android:hint="xx.xx"
-                android:inputType="numberDecimal"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/unit_price_text"
-                app:layout_constraintStart_toEndOf="@+id/unit_price_text"
-                app:layout_constraintTop_toTopOf="@+id/unit_price_text"
-                app:layout_constraintVertical_bias="0.461" />
 
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="238dp"
                 android:layout_height="285dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7">
+                app:layout_constraintTop_toBottomOf="@+id/oiltype_text">
 
                 <TableRow
                     android:layout_width="wrap_content"
@@ -54,7 +38,6 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Oil type"
                         android:textColor="#FFFFFF" />
 
                     <TextView
@@ -62,7 +45,6 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="PIC"
                         android:textColor="#EDEAEA" />
 
 
@@ -75,33 +57,38 @@
                     <RadioGroup
                         android:layout_width="wrap_content"
                         android:layout_height="263dp"
-                        android:background="#FFFFFF"
+                        android:background="#000000"
                         android:gravity="center">
 
                         <RadioButton
-                            android:id="@+id/radioButton"
+                            android:id="@+id/benzene_radio"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp" />
+                            android:layout_height="52dp"
+                            android:buttonTint="@color/colorAccent" />
 
                         <RadioButton
-                            android:id="@+id/radioButton2"
+                            android:id="@+id/gas95_radio"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp" />
+                            android:layout_height="52dp"
+                            android:buttonTint="@color/colorAccent" />
 
                         <RadioButton
-                            android:id="@+id/radioButton3"
+                            android:id="@+id/gas91_radio"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp" />
+                            android:layout_height="52dp"
+                            android:buttonTint="@color/colorAccent" />
 
                         <RadioButton
-                            android:id="@+id/radioButton4"
+                            android:id="@+id/e20_radio"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp" />
+                            android:layout_height="52dp"
+                            android:buttonTint="@color/colorAccent" />
 
                         <RadioButton
-                            android:id="@+id/radioButton5"
+                            android:id="@+id/e85_radio"
                             android:layout_width="wrap_content"
-                            android:layout_height="49dp" />
+                            android:layout_height="49dp"
+                            android:buttonTint="@color/colorAccent" />
                     </RadioGroup>
 
                     <LinearLayout
@@ -241,14 +228,15 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/mileage_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:backgroundTint="@android:color/holo_green_light"
                 android:ems="4"
                 android:hint="xxxxxx"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:shadowColor="#FFFFFF"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
@@ -258,66 +246,91 @@
                 app:layout_constraintVertical_bias="0.384" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/price_edittext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:ems="10"
-                android:hint="xx.xx"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:ems="5"
+                android:hint="xxx.xx"
                 android:inputType="numberDecimal"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/Amount_text"
-                app:layout_constraintStart_toEndOf="@+id/Amount_text"
-                app:layout_constraintTop_toTopOf="@+id/Amount_text"
-                app:layout_constraintVertical_bias="0.615" />
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/price_text"
+                app:layout_constraintStart_toEndOf="@+id/price_text"
+                app:layout_constraintTop_toTopOf="@+id/price_text"
+                app:layout_constraintVertical_bias="0.571" />
+
+            <EditText
+                android:id="@+id/unit_editext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:ems="5"
+                android:hint="xxx.xx"
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/unit_price_text"
+                app:layout_constraintStart_toEndOf="@+id/unit_price_text"
+                app:layout_constraintTop_toTopOf="@+id/unit_price_text"
+                app:layout_constraintVertical_bias="0.523" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="bath"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/price_edittext"
+                app:layout_constraintStart_toEndOf="@+id/price_edittext"
+                app:layout_constraintTop_toTopOf="@+id/price_edittext"
+                app:layout_constraintVertical_bias="0.523" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
                 android:text="bath"
                 android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/price_text"
-                app:layout_constraintStart_toEndOf="@+id/price_text"
-                app:layout_constraintTop_toTopOf="@+id/price_text"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintBottom_toBottomOf="@+id/unit_editext"
+                app:layout_constraintStart_toEndOf="@+id/unit_editext"
+                app:layout_constraintTop_toTopOf="@+id/unit_editext"
+                app:layout_constraintVertical_bias="0.523" />
 
-            <RadioGroup
-                android:layout_width="150dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-                app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
-                app:layout_constraintVertical_bias="0.0">
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:text="KM"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/mileage_text"
+                app:layout_constraintStart_toEndOf="@+id/mileage_text"
+                app:layout_constraintTop_toTopOf="@+id/mileage_text"
+                app:layout_constraintVertical_bias="0.384" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radioButton11"
-                        android:layout_width="70dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="km" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="mile" />
-                </LinearLayout>
-            </RadioGroup>
+            <TextView
+                android:id="@+id/oiltype_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="28dp"
+                android:text="Oil type"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +16,32 @@ import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.format.DateTimeFormatter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private double unitPrice = 0,price = 0,mileage = 0;
+    private EditText unitEdit,priceEdittext,mileageText;
+    private String time;
+    private RadioButton[] rads = new RadioButton[5];
+
+    public String findFuelType(RadioButton[] rads){
+
+        for(RadioButton r : rads){
+            if(r.isChecked()) {
+                if (r.getId() == R.id.benzene_radio) {
+                    return "benzene";
+                } else if (r.getId() == R.id.gas95_radio) {
+                    return "gasohol 95";
+                } else if (r.getId() == R.id.gas91_radio) {
+                    return "gasohol 91";
+                } else if (r.getId() == R.id.e20_radio) {
+                    return "gasohol e20";
+                } else if (r.getId() == R.id.e85_radio) {
+                    return "gasohol e85";
+                }
+            }
+        }
+        return "non select";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +50,52 @@ public class MainActivity extends AppCompatActivity {
 
         TextView dateText = findViewById(R.id.dateText);
         LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC+7"));
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        dateText.setText(dtf.format(now));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        time = dtf.format(now);
+        dateText.setText(time);
+
+
 
         Button summitBtn = findViewById(R.id.summit_btn);
-        summitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog.setTitle("Notification");
-                dialog.setMessage("Hello!");
-                dialog.setPositiveButton("OK", null);
-                dialog.show();
-            }
-        });
+        summitBtn.setOnClickListener(this);
 
+        unitEdit = findViewById(R.id.unit_editext);
+        priceEdittext = findViewById(R.id.price_edittext);
+        mileageText = findViewById(R.id.mileage_text);
+
+        rads[0] = findViewById(R.id.benzene_radio);
+        rads[1] = findViewById(R.id.gas95_radio);
+        rads[2] = findViewById(R.id.gas91_radio);
+        rads[3] = findViewById(R.id.e20_radio);
+        rads[4] = findViewById(R.id.e85_radio);
+
+
+
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        Button b = findViewById(v.getId());
+        if(b.getId() == R.id.summit_btn){
+            String unitText = unitEdit.getText().toString();
+            if(!(unitText==null || unitText.equals("")))
+                unitPrice = Double.parseDouble(unitText);
+            String priceText = priceEdittext.getText().toString();
+            if(!(priceText==null || priceText.equals("")))
+                price = Double.parseDouble(priceText);
+            String s = mileageText.getText().toString();
+            if(!(s == null || s.equals("")))
+                mileage = Double.parseDouble(s);
+
+            String resultFuel = findFuelType(rads);
+
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+            dialog.setTitle("Notification");
+            dialog.setMessage(String.valueOf(mileage)+"\n"+String.valueOf(unitPrice)+"\n"+String.valueOf(price)+"\n"+time+"\n"+resultFuel);
+            dialog.setPositiveButton("OK", null);
+            dialog.show();
+        }
     }
 }
