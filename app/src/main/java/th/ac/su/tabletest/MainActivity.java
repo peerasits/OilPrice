@@ -19,9 +19,12 @@ import org.threeten.bp.format.DateTimeFormatter;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private double unitPrice = 0,price = 0,mileage = 0;
+    private TextView dateText;
     private EditText unitEdit,priceEdittext,mileageText;
     private String time;
-    private RadioButton[] rads = new RadioButton[5];
+    private RadioButton[] rads = new RadioButton[7];
+    private LocalDateTime now;
+    private DateTimeFormatter dtf;
 
     public String findFuelType(RadioButton[] rads){
 
@@ -37,10 +40,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return "gasohol e20";
                 } else if (r.getId() == R.id.e85_radio) {
                     return "gasohol e85";
+                }else if(r.getId() == R.id.b7_radio){
+                    return  "b7 diesel";
+                }else if(r.getId() == R.id.b10_radio){
+                    return  "b10 diesel or standard diesel";
                 }
             }
         }
         return "non select";
+    }
+
+    protected void onResume() {
+
+        super.onResume();
+        time = dtf.format(now);
+        dateText.setText(time);
     }
 
     @Override
@@ -48,9 +62,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView dateText = findViewById(R.id.dateText);
-        LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC+7"));
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        dateText = findViewById(R.id.dateText);
+        now = LocalDateTime.now(ZoneId.of("UTC+7"));
+        dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         time = dtf.format(now);
         dateText.setText(time);
 
@@ -68,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rads[2] = findViewById(R.id.gas91_radio);
         rads[3] = findViewById(R.id.e20_radio);
         rads[4] = findViewById(R.id.e85_radio);
+        rads[5] = findViewById(R.id.b7_radio);
+        rads[6] = findViewById(R.id.b10_radio);
 
 
 
@@ -93,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
             dialog.setTitle("Notification");
-            dialog.setMessage(String.valueOf(mileage)+"\n"+String.valueOf(unitPrice)+"\n"+String.valueOf(price)+"\n"+time+"\n"+resultFuel);
+            dialog.setMessage(String.valueOf(mileage)+"\n" +
+                    "Unit price : "+String.valueOf(unitPrice)+" bath\nTotal price : "+String.valueOf(price)+" bath\n"+time+"\n"+resultFuel);
             dialog.setPositiveButton("OK", null);
             dialog.show();
         }
