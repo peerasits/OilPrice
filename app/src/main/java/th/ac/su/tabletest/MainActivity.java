@@ -3,7 +3,6 @@ package th.ac.su.tabletest;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +18,13 @@ import org.threeten.bp.format.DateTimeFormatter;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private double unitPrice = 0,price = 0,mileage = 0;
-    private TextView dateText;
+    private TextView dateText,amountText;
     private EditText unitEdit,priceEdittext,mileageText;
     private String time;
     private RadioButton[] rads = new RadioButton[7];
     private LocalDateTime now;
     private DateTimeFormatter dtf;
+    private String unitStr,priceStr;
 
     public String findFuelType(RadioButton[] rads){
 
@@ -55,6 +55,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         time = dtf.format(now);
         dateText.setText(time);
+
+        unitStr = unitEdit.getText().toString();
+        priceStr = priceEdittext.getText().toString() ;
+        Toast.makeText(MainActivity.this,unitStr+" "+priceStr,Toast.LENGTH_LONG).show();
+
+
     }
 
     @Override
@@ -76,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         unitEdit = findViewById(R.id.unit_editext);
         priceEdittext = findViewById(R.id.price_edittext);
         mileageText = findViewById(R.id.mileage_text);
+        amountText = findViewById(R.id.amount_text);
 
         rads[0] = findViewById(R.id.benzene_radio);
         rads[1] = findViewById(R.id.gas95_radio);
@@ -84,8 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rads[4] = findViewById(R.id.e85_radio);
         rads[5] = findViewById(R.id.b7_radio);
         rads[6] = findViewById(R.id.b10_radio);
-
-
 
 
 
